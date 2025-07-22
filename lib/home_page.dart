@@ -584,42 +584,46 @@ class ProgramOption extends StatelessWidget {
     final borderColor = isDarkMode ? Colors.white : Colors.black45;
     return Column(
       children: [
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            padding: EdgeInsets.all(ScreenUtil().setWidth(10)),
-            // margin:EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-              // color: const Color.fromARGB(255, 237, 237, 239),
-              
-              borderRadius: BorderRadius.circular(100),
-              border: Border.all(
-                width: 1,
-                color: borderColor,
+        Container(
+  padding: EdgeInsets.all(2), // Border thickness
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      colors: [Colors.deepOrange, Colors.amber],
+    ),
+    borderRadius: BorderRadius.circular(100),
+  ),
+  child: GestureDetector(
+    onTap: onTap,
+    child: Container(
+      padding: EdgeInsets.all(ScreenUtil().setWidth(10)),
+      decoration: BoxDecoration(
+        color: Colors.white, // Inner background (or transparent)
+        borderRadius: BorderRadius.circular(100),
+      ),
+      child: Row(
+        children: [
+          Image.asset(
+            imageAssetPath,
+            width: ScreenUtil().setWidth(50),
+            height: ScreenUtil().setHeight(50),
+          ),
+          SizedBox(width: ScreenUtil().setWidth(20)),
+          Expanded(
+            child: Text(
+              title,
+              style: TextStyle(
+                fontSize: ScreenUtil().setSp(18),
+                fontWeight: FontWeight.bold,
               ),
             ),
-            child: Row(
-              children: [
-                Image.asset(
-                  imageAssetPath,
-                  width: ScreenUtil().setWidth(50),
-                  height: ScreenUtil().setHeight(50),
-                ),
-                SizedBox(width: ScreenUtil().setWidth(20)),
-                Expanded(
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: ScreenUtil().setSp(18),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const Icon(Icons.arrow_forward),
-              ],
-            ),
           ),
-        ),
+          const Icon(Icons.arrow_forward),
+        ],
+      ),
+    ),
+  ),
+)
+,
         SizedBox(height: ScreenUtil().setHeight(20)),
       ],
     );
