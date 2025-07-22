@@ -60,6 +60,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
         ),
         centerTitle: true,
         title: const Text('ChatBot'),
+        backgroundColor: Colors.white,
       ),
       body: Column(
         children: [
